@@ -1,0 +1,40 @@
+{
+  "name": "mssql-sink-onprem",
+  "config": {
+    "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+    "connection.url": "jdbc:sqlserver://sqlserver.ocp.tangram-soft.com:1433;databaseName=school;encrypt=true;trustServerCertificate=true;",
+    "connection.username": "debezium",
+    "connection.password": "Passw0rd",
+    "insert.mode": "upsert",
+    "delete.enabled": "true",
+    "primary.key.mode": "record_key",
+    "primary.key.fields": "EnrollmentID",
+    "schema.evolution": "none",
+    "auto.create": "false",
+    "dialect.sqlserver.identity.insert" : "true",
+     
+    "topics.regex": "sqlserver\\.school\\..*",
+    "table.name.format": "school.dbo.${topic}2",  
+    "quote.identifiers": "true",
+     
+     
+    "key.converter": "io.confluent.connect.json.JsonSchemaConverter",
+    "key.converter.schema.registry.url": "<cloud schema registry endpoint>",
+    "key.converter.basic.auth.credentials.source": "USER_INFO",
+    "key.converter.schema.registry.basic.auth.user.info": "<API SR KEY>:<API SR SECRET>",
+    "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
+    "value.converter.schema.registry.url": "<cloud schema registry endpoint>",
+    "value.converter.basic.auth.credentials.source": "USER_INFO",
+    "value.converter.schema.registry.basic.auth.user.info": "<API SR KEY>:<API SR SECRET>"
+    
+    "transforms": "unwrap,route",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "true",
+    
+    "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.route.regex": "sqlserver\\.school\\.dbo\\.(.*)",
+    "transforms.route.replacement": "$1"
+
+  }
+}
