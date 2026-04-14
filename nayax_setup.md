@@ -122,8 +122,8 @@ sudo unzip confluentinc-kafka-connect-jdbc-10.9.2.zip -d /opt/connectors/
 sudo unzip snowflakeinc-snowflake-kafka-connector-3.5.3.zip -d /opt/connectors/
 sudo unzip debezium-debezium-connector-sqlserver-3.2.6.zip -d /opt/connectors/
 sudo unzip debezium-connector-jdbc-3.2.6.Final-plugin.zip -d /opt/connectors/
-sudo cp /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/mssql-jdbc-12.4.2.jre8.jar /opt/connectors/
-sudo chown -R cp-kafka-connect:confluent /opt/connectors/debezium-connector-jdbc
+sudo cp /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/mssql-jdbc-12.4.2.jre8.jar /opt/connectors/debezium-connector-jdbc
+sudo chown -R cp-kafka-connect:confluent /opt/connectors
 sudo chmod 775 /var/log/kafka
 ```
 
