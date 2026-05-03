@@ -30,6 +30,10 @@
     "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
     "value.converter.schema.registry.url": "<cloud schema registry endpoint>",
     "value.converter.basic.auth.credentials.source": "USER_INFO",
-    "value.converter.schema.registry.basic.auth.user.info": "<API SR KEY>:<API SR SECRET>"
+    "value.converter.schema.registry.basic.auth.user.info": "<API SR KEY>:<API SR SECRET>",
+    "transforms": "filterRows",
+    "transforms.filterRows.type": "io.debezium.transforms.Filter",
+    "transforms.filterRows.language": "jsr223.groovy",
+    "transforms.filterRows.condition": "(value instanceof org.apache.kafka.connect.data.Struct) && value.schema().field('after') != null ? value.after?.rep_ind != 1 : true"
   }
 }
