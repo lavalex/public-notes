@@ -117,12 +117,22 @@ wget https://hub-downloads.confluent.io/api/plugins/snowflakeinc/snowflake-kafka
 
 wget https://repo1.maven.org/maven2/io/debezium/debezium-connector-jdbc/3.2.6.Final/debezium-connector-jdbc-3.2.6.Final-plugin.zip
 
+wget https://repo1.maven.org/maven2/io/debezium/debezium-scripting/3.2.6.Final/debezium-scripting-3.2.6.Final.jar
+
+wget https://repo1.maven.org/maven2/org/codehaus/groovy/groovy/3.0.21/groovy-3.0.21.jar
+
+wget https://repo1.maven.org/maven2/org/codehaus/groovy/groovy-jsr223/3.0.21/groovy-jsr223-3.0.21.jar
+
+
 sudo mkdir -p /opt/connectors && sudo chown cp-kafka-connect:confluent /opt/connectors
 sudo unzip confluentinc-kafka-connect-jdbc-10.9.2.zip -d /opt/connectors/
 sudo unzip snowflakeinc-snowflake-kafka-connector-3.5.3.zip -d /opt/connectors/
 sudo unzip debezium-debezium-connector-sqlserver-3.2.6.zip -d /opt/connectors/
 sudo unzip debezium-connector-jdbc-3.2.6.Final-plugin.zip -d /opt/connectors/
 sudo cp /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/mssql-jdbc-12.4.2.jre8.jar /opt/connectors/debezium-connector-jdbc
+sudo cp debezium-scripting-3.2.6.Final.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/
+sudo cp groovy-3.0.21.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib.
+sudo cp groovy-jsr223-3.0.21.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib.
 sudo chown -R cp-kafka-connect:confluent /opt/connectors
 sudo chmod 775 /var/log/kafka
 ```
