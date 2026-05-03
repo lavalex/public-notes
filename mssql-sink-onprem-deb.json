@@ -28,9 +28,17 @@
     "value.converter.basic.auth.credentials.source": "USER_INFO",
     "value.converter.schema.registry.basic.auth.user.info": "<API SR KEY>:<API SR SECRET>"
     
-    "transforms": "unwrap,route",
+    "transforms": "unwrap,drop-orig,static-field,route",
     "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
     "transforms.unwrap.drop.tombstones": "true",
+
+    "transforms.drop-orig.type: "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.drop-orig.blacklist": "rep_ind",
+
+    "transforms.static-field.type": "org.apache.kafka.connect.transforms.InsertField$Value",
+    "transforms.static-field.static.field": "rep_ind",
+    "transforms.static-field.static.value": "1",
+
     
     "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
     "transforms.route.regex": "sqlserver\\.school\\.dbo\\.(.*)",
