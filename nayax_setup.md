@@ -131,8 +131,8 @@ sudo unzip debezium-debezium-connector-sqlserver-3.2.6.zip -d /opt/connectors/
 sudo unzip debezium-connector-jdbc-3.2.6.Final-plugin.zip -d /opt/connectors/
 sudo cp /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/mssql-jdbc-12.4.2.jre8.jar /opt/connectors/debezium-connector-jdbc
 sudo cp debezium-scripting-3.2.6.Final.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/
-sudo cp groovy-3.0.21.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib.
-sudo cp groovy-jsr223-3.0.21.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib.
+sudo cp groovy-3.0.21.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/
+sudo cp groovy-jsr223-3.0.21.jar /opt/connectors/debezium-debezium-connector-sqlserver-3.2.6/lib/
 sudo chown -R cp-kafka-connect:confluent /opt/connectors
 sudo chmod 775 /var/log/kafka
 ```
